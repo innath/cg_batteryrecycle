@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_c_gce_finishprd" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZB_GCE_PRDODR_IDNType" sap:label="B View Industry &amp; Order type mapping" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ProductionOrderType"/>
+                </Key>
+                <Property Name="ProductionOrderType" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Order Type"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Industry Sector"/>
+            </EntityType>
+            <EntityType Name="ZC_GCE_FINISHPRDType" sap:semantics="aggregate" sap:label="Recycle per Finish Prd" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Planning Plant for an Order"/>
+                <Property Name="ProductionOrder" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Production Order" sap:quickinfo="Order Number"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Material Description"/>
+                <Property Name="MaterialType" Type="Edm.String" MaxLength="70" sap:aggregation-role="dimension" sap:label="Model" sap:quickinfo="Characteristic Value"/>
+                <Property Name="Industry" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Industry" sap:quickinfo="Industry Sector" sap:value-list="standard"/>
+                <Property Name="finishdDt" Type="Edm.DateTime" Precision="0" sap:aggregation-role="dimension" sap:display-format="Date" sap:label="Horizon" sap:quickinfo="Basic finish date"/>
+                <Property Name="Netweight" Type="Edm.Decimal" Precision="10" Scale="3" sap:aggregation-role="measure" sap:label="Finished Material Weight" sap:filterable="false"/>
+                <Property Name="RecycleWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:label="Recycled Component Weight" sap:filterable="false"/>
+                <Property Name="Percentage" Type="Edm.Decimal" Precision="19" Scale="3" sap:aggregation-role="measure" sap:label="Recycled % Adoption" sap:filterable="false"/>
+                <Property Name="TotalQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:unit="Unit" sap:label="Total Quantity" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="calendarweek" Type="Edm.String" MaxLength="2" sap:aggregation-role="dimension" sap:display-format="NonNegative" sap:label="CalenderWeek" sap:quickinfo="Calendar Week" sap:value-list="standard"/>
+                <NavigationProperty Name="to_RecycleComponent" Relationship="cds_zui_c_gce_finishprd.assoc_7DF504D82699894C51945FBFBA81F592" FromRole="FromRole_assoc_7DF504D82699894C51945FBFBA81F592" ToRole="ToRole_assoc_7DF504D82699894C51945FBFBA81F592"/>
+            </EntityType>
+            <EntityType Name="ZC_GCE_KPI1_CARDType" sap:label="Test KPI Tag" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TotalComwt"/>
+                </Key>
+                <Property Name="TotalComwt" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Property Name="TotalNtwe" Type="Edm.Decimal" Precision="10" Scale="3"/>
+            </EntityType>
+            <EntityType Name="ZC_GCE_MEASUREMENTType" sap:semantics="aggregate" sap:label="WASTE REDUCTION MEASUREMENT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderNo" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Production Order" sap:quickinfo="Order Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Planning Plant for an Order"/>
+                <Property Name="Product" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Product" sap:quickinfo="Material Number for Order"/>
+                <Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Prod Description" sap:quickinfo="Material Description"/>
+                <Property Name="OrderType" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Prod.Order Type" sap:quickinfo="Order Type"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:label="Quantity" sap:quickinfo="Quantity of Goods Received for the Order Item" sap:filterable="false"/>
+                <Property Name="Unit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="UoM" sap:quickinfo="Unit of measure for in-house production" sap:semantics="unit-of-measure"/>
+                <Property Name="WasteQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="measure" sap:label="Waste Quantity" sap:quickinfo="Quantity in unit of entry" sap:filterable="false"/>
+                <Property Name="UnitWasteQuantity" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Unit of WasteQuantity" sap:quickinfo="Unit of entry" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <EntityType Name="ZC_GCE_RECYCLED_COMType" sap:semantics="aggregate" sap:label="Recycle per Finish Prd" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="MainMaterial" sap:quickinfo="Material Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Planning Plant for an Order"/>
+                <Property Name="ProductionOrder" Type="Edm.String" MaxLength="12" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="ProductionOrder" sap:quickinfo="Order Number"/>
+                <Property Name="Component" Type="Edm.String" MaxLength="18" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Component" sap:quickinfo="Material Number"/>
+                <Property Name="ComponentDescription" Type="Edm.String" MaxLength="40" sap:aggregation-role="dimension" sap:label="Component Description" sap:quickinfo="Material Description"/>
+                <Property Name="Recycled" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Recycled"/>
+                <Property Name="RecComWeight" Type="Edm.Decimal" Precision="10" Scale="3" sap:aggregation-role="measure" sap:label="RecComWeight" sap:filterable="false"/>
+                <Property Name="RecUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="RecUnit" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="RecycledComWe" Type="Edm.Decimal" Precision="13" Scale="3" sap:aggregation-role="dimension" sap:label="RecycledComWe"/>
+                <Property Name="RecPercentage" Type="Edm.Decimal" Precision="19" Scale="3" sap:aggregation-role="dimension" sap:label="RecPercentage"/>
+                <NavigationProperty Name="to_RecycleSubComponent" Relationship="cds_zui_c_gce_finishprd.assoc_10D3126EEC8999187D5E0CB13D47FEE1" FromRole="FromRole_assoc_10D3126EEC8999187D5E0CB13D47FEE1" ToRole="ToRole_assoc_10D3126EEC8999187D5E0CB13D47FEE1"/>
+            </EntityType>
+            <EntityType Name="ZC_GCE_REC_COM_MATType" sap:label="Recycle Sub-Component per finished Prd" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MainMaterial"/>
+                    <PropertyRef Name="CompMaterial"/>
+                    <PropertyRef Name="SubMaterial"/>
+                </Key>
+                <Property Name="MainMaterial" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="MainMaterial" sap:quickinfo="Material Number"/>
+                <Property Name="CompMaterial" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="CompMaterial" sap:quickinfo="Material Number"/>
+                <Property Name="SubMaterial" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="SubMaterial" sap:quickinfo="BOM component"/>
+                <Property Name="ProductionOrder" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="ProductionOrder" sap:quickinfo="Order Number"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:quickinfo="Planning Plant for an Order"/>
+                <Property Name="MatDescription" Type="Edm.String" MaxLength="40" sap:label="MatDescription" sap:quickinfo="Material Description"/>
+                <Property Name="CompDesc" Type="Edm.String" MaxLength="40" sap:label="CompDesc" sap:quickinfo="Material Description"/>
+                <Property Name="SubMatDesc" Type="Edm.String" MaxLength="40" sap:label="SubMatDesc" sap:quickinfo="Material Description"/>
+                <Property Name="NumberOfUnit" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="UoM" sap:label="NumberOfUnit" sap:quickinfo="Component Quantity"/>
+                <Property Name="CompMatweg" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="CompMatUom" sap:label="CompMatweg"/>
+                <Property Name="TotalComNtwe" Type="Edm.Decimal" Precision="10" Scale="3" sap:unit="CompMatUom" sap:label="TotalComNtwe"/>
+                <Property Name="UoM" Type="Edm.String" MaxLength="3" sap:label="UoM" sap:quickinfo="Component Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="CompMatUom" Type="Edm.String" MaxLength="3" sap:label="CompMatUom" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <EntityType Name="Z_calendarweekVHType" sap:label="Calendar week Value Help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="calendarWeek"/>
+                </Key>
+                <Property Name="calendarWeek" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:label="Calendar Week"/>
+                <Property Name="calendarquarter" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Calendar Quarter"/>
+            </EntityType>
+            <Association Name="assoc_7DF504D82699894C51945FBFBA81F592" sap:content-version="1">
+                <End Type="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType" Multiplicity="1" Role="FromRole_assoc_7DF504D82699894C51945FBFBA81F592"/>
+                <End Type="cds_zui_c_gce_finishprd.ZC_GCE_RECYCLED_COMType" Multiplicity="*" Role="ToRole_assoc_7DF504D82699894C51945FBFBA81F592"/>
+            </Association>
+            <Association Name="assoc_10D3126EEC8999187D5E0CB13D47FEE1" sap:content-version="1">
+                <End Type="cds_zui_c_gce_finishprd.ZC_GCE_RECYCLED_COMType" Multiplicity="1" Role="FromRole_assoc_10D3126EEC8999187D5E0CB13D47FEE1"/>
+                <End Type="cds_zui_c_gce_finishprd.ZC_GCE_REC_COM_MATType" Multiplicity="*" Role="ToRole_assoc_10D3126EEC8999187D5E0CB13D47FEE1"/>
+            </Association>
+            <EntityContainer Name="cds_zui_c_gce_finishprd_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZB_GCE_PRDODR_IDN" EntityType="cds_zui_c_gce_finishprd.ZB_GCE_PRDODR_IDNType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_GCE_FINISHPRD" EntityType="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_GCE_KPI1_CARD" EntityType="cds_zui_c_gce_finishprd.ZC_GCE_KPI1_CARDType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_GCE_MEASUREMENT" EntityType="cds_zui_c_gce_finishprd.ZC_GCE_MEASUREMENTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_GCE_RECYCLED_COM" EntityType="cds_zui_c_gce_finishprd.ZC_GCE_RECYCLED_COMType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_GCE_REC_COM_MAT" EntityType="cds_zui_c_gce_finishprd.ZC_GCE_REC_COM_MATType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_calendarweekVH" EntityType="cds_zui_c_gce_finishprd.Z_calendarweekVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_10D3126EEC8999187D5E0CB13D47FEE1" Association="cds_zui_c_gce_finishprd.assoc_10D3126EEC8999187D5E0CB13D47FEE1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_GCE_RECYCLED_COM" Role="FromRole_assoc_10D3126EEC8999187D5E0CB13D47FEE1"/>
+                    <End EntitySet="ZC_GCE_REC_COM_MAT" Role="ToRole_assoc_10D3126EEC8999187D5E0CB13D47FEE1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7DF504D82699894C51945FBFBA81F592" Association="cds_zui_c_gce_finishprd.assoc_7DF504D82699894C51945FBFBA81F592" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_GCE_FINISHPRD" Role="FromRole_assoc_7DF504D82699894C51945FBFBA81F592"/>
+                    <End EntitySet="ZC_GCE_RECYCLED_COM" Role="ToRole_assoc_7DF504D82699894C51945FBFBA81F592"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType/Industry"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Industry"/>
+                        <PropertyValue Property="CollectionPath" String="ZB_GCE_PRDODR_IDN"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Industry"/>
+                                    <PropertyValue Property="ValueListProperty" String="Industry"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductionOrderType"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType/calendarweek"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="CalenderWeek"/>
+                        <PropertyValue Property="CollectionPath" String="Z_calendarweekVH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="calendarweek"/>
+                                    <PropertyValue Property="ValueListProperty" String="calendarWeek"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="calendarquarter"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_c_gce_finishprd.cds_zui_c_gce_finishprd_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_c_gce_finishprd.cds_zui_c_gce_finishprd_Entities/ZC_GCE_FINISHPRD"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>Netweight</PropertyPath>
+                                <PropertyPath>RecycleWeight</PropertyPath>
+                                <PropertyPath>Percentage</PropertyPath>
+                                <PropertyPath>TotalQty</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_c_gce_finishprd.cds_zui_c_gce_finishprd_Entities/ZC_GCE_MEASUREMENT"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>Quantity</PropertyPath>
+                                <PropertyPath>WasteQuantity</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_c_gce_finishprd.cds_zui_c_gce_finishprd_Entities/ZC_GCE_RECYCLED_COM"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>RecComWeight</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType/Netweight"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType/RecycleWeight"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                    <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType/Percentage"
+                        xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                        <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_FINISHPRDType/TotalQty"
+                            xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                            <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_MEASUREMENTType/Quantity"
+                                xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                                <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_MEASUREMENTType/WasteQuantity"
+                                    xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                                    <Annotations Target="cds_zui_c_gce_finishprd.ZC_GCE_RECYCLED_COMType/RecComWeight"
+                                        xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                                        <atom:link rel="self" href="https://zin-blr-srv16:8001/sap/opu/odata/sap/ZUI_SB_GCE_FINISHPRD/$metadata"
+                                            xmlns:atom="http://www.w3.org/2005/Atom"/>
+                                            <atom:link rel="latest-version" href="https://zin-blr-srv16:8001/sap/opu/odata/sap/ZUI_SB_GCE_FINISHPRD/$metadata"
+                                                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                                            </Schema>
+                                        </edmx:DataServices>
+                                    </edmx:Edmx>

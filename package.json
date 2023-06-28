@@ -1,0 +1,82 @@
+{
+  "name": "MyCAPApp",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.2.0",
+    "@sap/cds": "^6",
+    "@sap/cds-odata-v2-adapter-proxy": "1.9.21",
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "@sap/ux-specification": "^1.108.7",
+    "rimraf": "^3.0.2",
+    "sqlite3": "^5"
+  },
+  "dest": {
+    "kind": "destination",
+    "credentials": {
+      "destination": "cpapp-destination"
+    }
+  },
+  "odata": {
+    "kind": "odata",
+    "credentials": {
+      "destination": "S20OdataDest"
+    }
+  },
+  "conn": {
+    "kind": "connectivity"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "undeploy": "cf undeploy MyCAPApp --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-battery": "cds watch --open battery/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana"
+      },
+      "ZUI_SB_GCE_FINISHPRD": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZUI_SB_GCE_FINISHPRD",
+        "csrf": true,
+        "XSRF-TOKEN": true,
+        "X-XSRF-TOKEN": true,
+        "credentials": {
+          "destination": "S20OdataDest",
+          "path": "/ZUI_SB_GCE_FINISHPRD",
+          "requestTimeout": 30000
+        }
+      },
+      "ZUI_SB_GCE_BTRYRECYCL": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZUI_SB_GCE_BTRYRECYCL",
+        "credentials": {
+          "destination": "S20OdataDest",
+          "path": "/sap/opu/odata/sap/ZUI_SB_GCE_BTRYRECYCL",
+          "requestTimeout": 100000
+        }
+      },
+      "ZUI_C_GCE_BTRYRECYCL": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZUI_C_GCE_BTRYRECYCL",
+        "credentials": {
+          "destination": "S20OdataDest",
+          "path": "/ZUI_C_GCE_BTRYRECYCL"
+        }
+      }
+    }
+  },
+  "sapux": [
+    "app/battery"
+  ]
+}

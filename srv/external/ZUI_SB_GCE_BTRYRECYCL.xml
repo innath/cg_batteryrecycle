@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_c_gce_btryrecycl" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_GCE_BTRYRECYCLType" sap:label="View for Greencore Battery Recycling" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="VBELN"/>
+                </Key>
+                <Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales and Distribution Document Number"/>
+                <Property Name="LIFNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="TSPID" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Selection rule" sap:quickinfo="Selection Rules for Employee Data"/>
+                <Property Name="SOURCE" Type="Edm.String" MaxLength="20" sap:label="Location"/>
+                <Property Name="DEST" Type="Edm.String" MaxLength="20" sap:label="Location"/>
+                <Property Name="SHPCOST" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERS" sap:label="Unpl. del.costs" sap:quickinfo="Unplanned delivery costs"/>
+                <Property Name="REGION" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+                <Property Name="WERKS" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="LFDAT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Deliv. date(From/to)" sap:quickinfo="Delivery date"/>
+                <Property Name="TOBLIFE" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="UOM_TOBLIFE" sap:label="Gross weight"/>
+                <Property Name="TOBREC" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="UOM_TOBREC" sap:label="Gross weight"/>
+                <Property Name="LI_PERCEN" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="AL_PERCEN" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="NI_PERCEN" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="CO_PERCEN" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="LI_TOTW" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="AL_TOTW" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="NI_TOTW" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="CO_TOTW" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="UOM_WEIGHT" sap:label="Stock Quantity"/>
+                <Property Name="YEAR_A" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Date" sap:quickinfo="Field of type DATS"/>
+                <Property Name="UOM_TOBLIFE" Type="Edm.String" MaxLength="3" sap:label="Weight unit" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="UOM_TOBREC" Type="Edm.String" MaxLength="3" sap:label="Weight unit" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="UOM_WEIGHT" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="WAERS" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityContainer Name="cds_zui_c_gce_btryrecycl_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_GCE_BTRYRECYCL" EntityType="cds_zui_c_gce_btryrecycl.ZC_GCE_BTRYRECYCLType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="cds_zui_c_gce_btryrecycl.cds_zui_c_gce_btryrecycl_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://zin-blr-srv16:8001/sap/opu/odata/sap/ZUI_SB_GCE_BTRYRECYCL/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="https://zin-blr-srv16:8001/sap/opu/odata/sap/ZUI_SB_GCE_BTRYRECYCL/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
