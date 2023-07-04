@@ -2,64 +2,46 @@ using ZUI_C_GCE_BTRYRECYCL from './external/ZUI_C_GCE_BTRYRECYCL.cds';
 
 service ZUI_C_GCE_BTRYRECYCLSampleService {
     @readonly
-//     @Aggregation.ApplySupported.PropertyRestrictions: true
-//     @cds.redirection.target: true
-//     @cds.persistence.exists: true
     entity ZC_GCE_BTRYRECYCL as projection on ZUI_C_GCE_BTRYRECYCL.ZC_GCE_BTRYRECYCL
-    {       
-          //   @Analytics.Dimension 
-            key DeliveryNumber, 
+    {        key DeliveryNumber, 
                  TypeCode, 
-          //   @Analytics.Dimension
                  Supplier, 
-          //   @Analytics.Dimension
-                 Carrier,
-          //   @Analytics.Dimension 
-                 Source, 
-          //   @Analytics.Dimension
+                 Carrier, 
+                 Source,
                  Destination, 
                  ShipmentCost, 
-          //   @Analytics.Dimension
-                 Region, 
-          //   @Analytics.Dimension
+                 Region,
                  Warehouse, 
-          //   @Analytics.Measure
+                 WarehouseName, 
                  DateOfDelivery, 
                  TOBMovedTo2ndLife, 
-                 TOBRecycle,
-          //   @Analytics.Measure 
-                 PercentageOfLi, 
-          //   @Analytics.Measure
+                 TOBRecycle, 
+                 PercentageOfFe, 
                  PercentageOfAL, 
-          //   @Analytics.Measure
-                 PercentageOfNi,
-          //   @Analytics.Measure 
+                 PercentageOfCu, 
+                 PercentageOfMn, 
                  PercentageOfCo, 
-          //   @Analytics.Measure
-          //   @Aggregation.default : #SUM
-                 TotalLiWeight,
-          //   @Analytics.Measure
-          //   @Aggregation.default : #SUM 
-                 TotalALWeight, 
-          //   @Analytics.Measure
-          //   @Aggregation.default : #SUM
-                 TotalNiWeight, 
-          //   @Analytics.Measure
-          //   @Aggregation.default : #SUM
+                 PercentageOfLi, 
+                 PercentageOfNi, 
+                 TotalFeWeight, 
+                 TotalAlWeight, 
+                 TotalCuWeight, 
+                 TotalMnWeight, 
                  TotalCoWeight, 
-          //   @Analytics.Measure
+                 TotalLiWeight, 
+                 TotalNiWeight, 
                  Year_a, 
                  WeightUnit, 
                  CurrencyCode, 
                  PurchaseOrderNumber, 
                  OrderNumber, 
-          //     @Analytics.Dimension   
                  Material, 
+                 MaterialNumber, 
                  MovementType, 
                  StockQuantity, 
                  SupplierName, 
                  CarrierName, 
-                 RegionDescription     
+                 RegionDescription
                  }    
 ;
 }

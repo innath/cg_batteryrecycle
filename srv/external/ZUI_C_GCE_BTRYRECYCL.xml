@@ -3,39 +3,39 @@
     xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
     xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
     xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"
+    <edmx:Reference Uri="https://zin-blr-srv16:8001/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value"
         xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
@@ -55,23 +55,31 @@
                 <Property Name="ShipmentCost" Type="Edm.Decimal" Precision="13" Scale="2" sap:unit="CurrencyCode"/>
                 <Property Name="Region" Type="Edm.String" MaxLength="3"/>
                 <Property Name="Warehouse" Type="Edm.String" MaxLength="4"/>
+                <Property Name="WarehouseName" Type="Edm.String" MaxLength="30"/>
                 <Property Name="DateOfDelivery" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
                 <Property Name="TOBMovedTo2ndLife" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
                 <Property Name="TOBRecycle" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
-                <Property Name="PercentageOfLi" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
+                <Property Name="PercentageOfFe" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
                 <Property Name="PercentageOfAL" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
-                <Property Name="PercentageOfNi" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
+                <Property Name="PercentageOfCu" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
+                <Property Name="PercentageOfMn" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
                 <Property Name="PercentageOfCo" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
-                <Property Name="TotalLiWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
-                <Property Name="Total0ALWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
-                <Property Name="TotalNiWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
+                <Property Name="PercentageOfLi" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
+                <Property Name="PercentageOfNi" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
+                <Property Name="TotalFeWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
+                <Property Name="TotalAlWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
+                <Property Name="TotalCuWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
+                <Property Name="TotalMnWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
                 <Property Name="TotalCoWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
+                <Property Name="TotalLiWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
+                <Property Name="TotalNiWeight" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="WeightUnit"/>
                 <Property Name="Year_a" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
                 <Property Name="WeightUnit" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
                 <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
                 <Property Name="PurchaseOrderNumber" Type="Edm.String" MaxLength="10"/>
                 <Property Name="OrderNumber" Type="Edm.String" MaxLength="12"/>
                 <Property Name="Material" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MaterialNumber" Type="Edm.String" MaxLength="40"/>
                 <Property Name="MovementType" Type="Edm.String" MaxLength="3"/>
                 <Property Name="StockQuantity" Type="Edm.Decimal" Precision="31" Scale="14" sap:unit="WeightUnit"/>
                 <Property Name="SupplierName" Type="Edm.String" MaxLength="40"/>

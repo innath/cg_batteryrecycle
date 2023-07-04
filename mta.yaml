@@ -3,85 +3,112 @@ ID: MyCAPApp
 description: A simple CAP project.
 version: 1.0.0
 modules:
-- name: MyCAPApp-srv
-  type: nodejs
-  path: gen/srv
-  requires:
-  - name: MyCAPApp-db
-  provides:
-  - name: srv-api
-    properties:
-      srv-url: ${default-url}
-  parameters:
-    buildpack: nodejs_buildpack
-  build-parameters:
-    builder: npm-ci
-- name: MyCAPApp-db-deployer
-  type: hdb
-  path: gen/db
-  requires:
-  - name: MyCAPApp-db
-  parameters:
-    buildpack: nodejs_buildpack
-- name: MyCAPApp-app-content
-  type: com.sap.application.content
-  path: .
-  requires:
-  - name: MyCAPApp-repo-host
-    parameters:
-      content-target: true
-  build-parameters:
-    build-result: resources
+  - name: MyCAPApp-srv
+    type: nodejs
+    path: gen/srv
     requires:
-    - artifacts:
-      - project1.zip
-      name: project1
-      target-path: resources/
-- name: project1
-  type: html5
-  path: app/project1
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
+      - name: MyCAPApp-db
+      - name: MyCAPApp-auth
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+  - name: MyCAPApp-db-deployer
+    type: hdb
+    path: gen/db
+    requires:
+      - name: MyCAPApp-db
+    parameters:
+      buildpack: nodejs_buildpack
+  - name: MyCAPApp-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: MyCAPApp-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - project1.zip
+          name: project1
+          target-path: resources/
+  - name: project1
+    type: html5
+    path: app/project1
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms:
+        []
+
+  - name: MyCAPApp
+    type: approuter.nodejs
+    path: app/ # from cds.env.folders. Consider also cds.env.build.target -> gen/app
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: MyCAPApp-auth
 resources:
-- name: MyCAPApp-db
-  type: com.sap.xs.hdi-container
-  parameters:
-    service: hana
-    service-plan: hdi-shared
-- name: MyCAPApp-repo-host
-  type: org.cloudfoundry.managed-service
-  parameters:
-    service: html5-apps-repo
-    service-name: MyCAPApp-html5-srv
-    service-plan: app-host
-- name: MyCAPApp-destination-service
-  type: org.cloudfoundry.managed-service
-  parameters:
-    config:
-      HTML5Runtime_enabled: false
-      init_data:
-        instance:
-          destinations:
-          - Authentication: NoAuthentication
-            Name: ui5
-            ProxyType: Internet
-            Type: HTTP
-            URL: https://ui5.sap.com
-          existing_destinations_policy: update
-      version: 1.0.0
-    service: destination
-    service-name: MyCAPApp-destination-service
-    service-plan: lite
+  - name: MyCAPApp-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: MyCAPApp-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: MyCAPApp-html5-srv
+      service-plan: app-host
+  - name: MyCAPApp-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: false
+        init_data:
+          instance:
+            destinations:
+              - Authentication: NoAuthentication
+                Name: ui5
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://ui5.sap.com
+            existing_destinations_policy: update
+        version: 1.0.0
+      service: destination
+      service-name: MyCAPApp-destination-service
+      service-plan: lite
+  - name: MyCAPApp-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: MyCAPApp-${org}-${space}
+        tenant-mode: dedicated
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-  - builder: custom
-    commands:
-    - npx -p @sap/cds-dk cds build --production
+    - builder: custom
+      commands:
+        - npx -p @sap/cds-dk cds build --production

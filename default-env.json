@@ -1,0 +1,12 @@
+{
+    "VCAP_SERVICES": {
+    },
+    "destinations": [
+      {
+        "name": "S20OdataDest",
+        "url": "http://zin-blr-srv16:8001/sap/opu/odata/sap",
+        "username": "DEV",
+        "password": "Welcome@123"
+      }
+    ]
+  }

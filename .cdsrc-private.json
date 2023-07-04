@@ -1,0 +1,46 @@
+{
+  "requires": {
+    "[hybrid]": {
+      "auth": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.eu10.hana.ondemand.com",
+          "org": "CAPGEMINI_SERVICE SAS_cg-apac-coe-sa1-lcafzkqr",
+          "space": "dev",
+          "instance": "cpapp-xsuaa",
+          "key": "cpapp-xsuaa-key",
+          "resolved": false
+        },
+        "kind": "xsuaa",
+        "vcap": {
+          "name": "auth"
+        }
+      },
+      "destinations": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.eu10.hana.ondemand.com",
+          "org": "CAPGEMINI_SERVICE SAS_cg-apac-coe-sa1-lcafzkqr",
+          "space": "dev",
+          "instance": "cpapp-destination",
+          "key": "cpapp-destination-key",
+          "resolved": false
+        },
+        "kind": "destinations",
+        "vcap": {
+          "name": "destination"
+        }
+      },
+      "ZUI_SB_GCE_BTRYRECYCL": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZUI_C_GCE_BTRYRECYCL",
+        "csrf": true,
+        "credentials": {
+            "path": "/ZUI_C_GCE_BTRYRECYCL",
+            "destination": "S20OdataDest",
+            "requestTimeout": 100000
+        }
+    }
+  }
+}
+}

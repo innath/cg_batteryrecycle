@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="ZUI_C_GCE_BTRYRECYCLSampleService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="ZC_GCE_BTRYRECYCL" EntityType="ZUI_C_GCE_BTRYRECYCLSampleService.ZC_GCE_BTRYRECYCL"/>
+            </EntityContainer>
+            <EntityType Name="ZC_GCE_BTRYRECYCL">
+                <Key>
+                    <PropertyRef Name="DeliveryNumber"/>
+                </Key>
+                <Property Name="DeliveryNumber" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="TypeCode" Type="Edm.String" MaxLength="2"/>
+                <Property Name="Supplier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Carrier" Type="Edm.String" MaxLength="10"/>
+                <Property Name="Source" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Destination" Type="Edm.String" MaxLength="20"/>
+                <Property Name="ShipmentCost" Type="Edm.Decimal" Scale="2" Precision="13"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3"/>
+                <Property Name="Warehouse" Type="Edm.String" MaxLength="4"/>
+                <Property Name="DateOfDelivery" Type="Edm.Date"/>
+                <Property Name="TOBMovedTo2ndLife" Type="Edm.Decimal" Scale="3" Precision="13"/>
+                <Property Name="TOBRecycle" Type="Edm.Decimal" Scale="3" Precision="13"/>
+                <Property Name="PercentageOfLi" Type="Edm.Decimal" Scale="14" Precision="31"/>
+                <Property Name="PercentageOfAL" Type="Edm.Decimal" Scale="14" Precision="31"/>
+                <Property Name="PercentageOfNi" Type="Edm.Decimal" Scale="14" Precision="31"/>
+                <Property Name="PercentageOfCo" Type="Edm.Decimal" Scale="14" Precision="31"/>
+                <Property Name="TotalLiWeight" Type="Edm.Decimal" Scale="3" Precision="13"/>
+                <Property Name="TotalALWeight" Type="Edm.Decimal" Scale="3" Precision="13"/>
+                <Property Name="TotalNiWeight" Type="Edm.Decimal" Scale="3" Precision="13"/>
+                <Property Name="TotalCoWeight" Type="Edm.Decimal" Scale="3" Precision="13"/>
+                <Property Name="Year_a" Type="Edm.Date"/>
+                <Property Name="WeightUnit" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
+                <Property Name="PurchaseOrderNumber" Type="Edm.String" MaxLength="10"/>
+                <Property Name="OrderNumber" Type="Edm.String" MaxLength="12"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MovementType" Type="Edm.String" MaxLength="3"/>
+                <Property Name="StockQuantity" Type="Edm.Decimal" Scale="14" Precision="31"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CarrierName" Type="Edm.String" MaxLength="40"/>
+                <Property Name="RegionDescription" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <Annotations Target="ZUI_C_GCE_BTRYRECYCLSampleService.ZC_GCE_BTRYRECYCL">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DeliveryNumber"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Carrier"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Destination"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZUI_C_GCE_BTRYRECYCLSampleService.EntityContainer/ZC_GCE_BTRYRECYCL">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
